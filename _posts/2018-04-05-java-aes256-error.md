@@ -39,12 +39,12 @@ Oracle에서는 길이 제한을 해제하고 싶은 사용자를 위해 JCE Unl
 ## 방법
 현재 사용 중인 Java버전에 맞춰 Unlimited Strength 정책 파일을 다운받습니다.
 
-* [Java 6](http://www.oracle.com/technetwork/java/javase/downloads/jce-6-download-429243.html)
-* [Java 7](http://www.oracle.com/technetwork/java/javase/downloads/jce-7-download-432124.html)
-* [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html)
+* [Java 6](https://www.oracle.com/kr/java/technologies/javase-jce6-downloads.html)
+* [Java 7](https://www.oracle.com/kr/java/technologies/javase-jce7-downloads.html)
+* [Java 8](https://www.oracle.com/kr/java/technologies/javase-jce8-downloads.html)
 
 다운 받은 파일안의 `local_policy.jar`, `US_export_policy.jar` 파일을 `<JAVA_HOME>/jre/lib/security/` 폴더로 옮겨 기존 정책을 덮어씌웁니다. 그러면 JCE로 사용 가능한 모든 암호화의 키 길이 제한이 해제됩니다. <br/>
-추가로 [8u151 Release Notes](http://www.oracle.com/technetwork/java/javase/8u151-relnotes-3850493.html)에서는 해당 버전부터 별도의 다운로드없이 Unlimited Strength 정책을 설정할 수 있게 추가 번들이 같이 제공됩니다.  
+추가로 [8u151 Release Notes](https://www.oracle.com/java/technologies/javase/8u151-relnotes.html)에서는 해당 버전부터 별도의 다운로드없이 Unlimited Strength 정책을 설정할 수 있게 추가 번들이 같이 제공됩니다.  
 해당 버전에서 정책 파일은 `<JAVA_HOME>/jre/lib/security/policy` 경로에 `limited`와 `unlimited` 폴더로 구성되며, unlimited 설정은 `<JAVA_HOME>/jre/lib/security/java.security` 파일을 열어 아래와 같은 부분을 찾아 주석 처리(`#`)를 지워주면 제한 해제된 정책을 사용할 수 있습니다.
 
 ``` Java
@@ -52,7 +52,7 @@ crypto.policy=unlimited
 ```
 
 ## 변경된 기본 정책
-2018년 1월 업데이트된 [Java8u161 Release Notes](http://www.oracle.com/technetwork/java/javase/8u161-relnotes-4021379.html#JDK-8170157)에 따르면 Java8u161 버전부터는 JCE 기본 정책이 Unlimited이며, 길이를 제한하고 싶다면 위에서 언급한 `java.security`파일에서 `crypto.policy`를 주석 처리하면 됩니다.
+2018년 1월 업데이트된 [Java8u161 Release Notes](https://www.oracle.com/java/technologies/javase/8u161-relnotes.html)에 따르면 Java8u161 버전부터는 JCE 기본 정책이 Unlimited이며, 길이를 제한하고 싶다면 위에서 언급한 `java.security`파일에서 `crypto.policy`를 주석 처리하면 됩니다.
 Unlimited를 기본으로 사용하는 Java 버전은 [JDK-8170157 : Enable unlimited cryptographic policy by default in Oracle JDK builds](https://bugs.java.com/view_bug.do?bug_id=JDK-8170157)에서 확인할 수 있습니다.
 
 # 참고
